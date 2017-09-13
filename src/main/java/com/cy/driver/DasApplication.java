@@ -35,6 +35,6 @@ public class DasApplication {
 		System.out.println(systemData);
 		String s = redisService.getStr("hello");
 		redisService.setStr("hello","World",20);
-		return "Hello";
+		return "Hello world";
 	}
 }
