@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+    <bean id="driverLogService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+        <property name="serviceUrl" value="${syslog.remote.saveLog}" />
+        <property name="serviceInterface" value="com.cy.syslog.service.DriverLogService" />
+        <property name="overloadEnabled" value="false" />
+    </bean>
+
+    <bean id="pushLogService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+        <property name="serviceUrl" value="${syslog.remote.savePushLog}" />
+        <property name="serviceInterface" value="com.cy.syslog.service.PushLogService" />
+        <property name="overloadEnabled" value="false" />
+    </bean>
+</beans>

@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://code.alibabatech.com/schema/dubbo
+    http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!--dubbo 配置-->
+    <dubbo:application name="${dubbo.application.name}"/>
+    <dubbo:registry address="${dubbo.registry.address}" file="${user.home}/dubbo/kdw-das-consumer.cache"/>
+    <!-- 取消启动检查提供者是否存在服务 -->
+    <dubbo:consumer check="false"/>
+
+     <!--扫描注解包路径，多个包用逗号分隔，不填pacakge表示扫描当前ApplicationContext中所有的类 -->
+    <dubbo:annotation package="com.cy.driver.service" />
+    <!--location-->
+    <dubbo:reference id="locationQueryService" interface="com.cy.location.service.LocationQueryService"
+                     version="${cy.location.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="locationSaveService" interface="com.cy.location.service.LocationSaveService"
+                     version="${cy.location.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="locationLineService" interface="com.cy.location.service.LocationLineService"
+                     version="${cy.location.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="driverLinePointService" interface="com.cy.location.service.DriverLinePointService"
+                     version="${cy.location.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="locationQuery2Service" interface="com.cy.location.service.LocationQuery2Service"
+                     version="${cy.location.service.default.version}" retries="0" timeout="650000"/>
+
+    <!--pass-->
+    <dubbo:reference id="appReleasesService" interface="com.cy.pass.service.AppReleasesService"
+                     version="${cy.pass.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="driverAppShareService" interface="com.cy.pass.service.DriverAppShareService"
+                     version="${cy.pass.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="driverEmptyReportService" interface="com.cy.pass.service.DriverEmptyReportService"
+                     version="${cy.pass.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="rpcDriverImgService" interface="com.cy.pass.service.DriverImgService"
+                     version="${cy.pass.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="driverOftenCitysService" interface="com.cy.pass.service.DriverOftenCitysService"
+                     version="${cy.pass.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="driverPactService" interface="com.cy.pass.service.DriverPactService"
+                     version="${cy.pass.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="driverTelephoneInfoService" interface="com.cy.pass.service.DriverTelephoneInfoService"
+                     version="${cy.pass.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="driverUserInfoService" interface="com.cy.pass.service.DriverUserInfoService"
+                     version="${cy.pass.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="imgDeployInfoService" interface="com.cy.pass.service.ImgDeployInfoService"
+                     version="${cy.pass.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="initializationDataService" interface="com.cy.pass.service.InitializationDataService"
+                     version="${cy.pass.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="systemCodeService" interface="com.cy.pass.service.SystemCodeService"
+                     version="${cy.pass.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="systemTreeCodeService" interface="com.cy.pass.service.SystemTreeCodeService"
+                     version="${cy.pass.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="userFeedBackService" interface="com.cy.pass.service.UserFeedBackService"
+                     version="${cy.pass.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="userWithdrawalRecordService" interface="com.cy.pass.service.UserWithdrawalRecordService"
+                     version="${cy.pass.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="webUserInfoService" interface="com.cy.pass.service.WebUserInfoService"
+                     version="${cy.pass.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="messageCenterService" interface="com.cy.pass.service.MessageCenterService"
+                     version="${cy.pass.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="opsActivityInfoService" interface="com.cy.pass.service.OpsActivityInfoService"
+                     version="${cy.pass.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="sysPushCounterService" interface="com.cy.pass.service.SysPushCounterService"
+                     version="${cy.pass.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="puseJoiningProcessService" interface="com.cy.pass.service.PuseJoiningProcessService"
+                     version="${cy.pass.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="logOffApplyService" interface="com.cy.pass.service.LogOffApplyService"
+                     version="${cy.pass.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="userFeedInfoService" interface="com.cy.pass.service.UserFeedInfoService"
+                     version="${cy.pass.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="companyInfoService" interface="com.cy.pass.service.CompanyInfoService"
+                     version="${cy.pass.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="appChannelService" interface="com.cy.pass.service.AppChannelService"
+                     version="${cy.pass.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="appShareInfoService" interface="com.cy.pass.service.AppShareInfoService"
+                     version="${cy.pass.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="ownerItemStatService" interface="com.cy.pass.service.OwnerItemStatService"
+                     version="${cy.pass.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="driverDayLineService" interface="com.cy.pass.service.DriverDayLineService"
+                     version="${cy.pass.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="driverItemStatService" interface="com.cy.pass.service.DriverItemStatService"
+                     version="${cy.pass.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="messageRemindService" interface="com.cy.pass.service.MessageRemindService"
+                     version="${cy.pass.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="bankCardBinVersionService" interface="com.cy.pass.service.BankCardBinVersionService"
+                     version="${cy.pass.service.default.version}" retries="0" timeout="650000"/>
+
+    <!--cargo-->
+    <dubbo:reference id="cargoAssessService" interface="com.cy.cargo.service.CargoAssessService"
+                     version="${cy.cargo.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="cargoService" interface="com.cy.cargo.service.CargoService"
+                     version="${cy.cargo.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="quoteService" interface="com.cy.cargo.service.QuoteService"
+                     version="${cy.cargo.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="cargoQueryService" interface="com.cy.cargo.service.CargoQueryService"
+                     version="${cy.cargo.service.default.version}" retries="0" timeout="650000"/>
+
+    <!--order-->
+    <dubbo:reference id="orderECTNService" interface="com.cy.order.service.OrderECTNService"
+                     version="${cy.order.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="orderProblemService" interface="com.cy.order.service.OrderProblemService"
+                     version="${cy.order.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="orderService" interface="com.cy.order.service.OrderService"
+                     version="${cy.order.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="receivablesService" interface="com.cy.order.service.ReceivablesService"
+                     version="${cy.order.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="searchOrderService" interface="com.cy.order.service.SearchOrderService"
+                     version="${cy.order.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="distributeService" interface="com.cy.order.service.DistributeService"
+                     version="${cy.order.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="orderAssessService" interface="com.cy.order.service.OrderAssessService"
+                     version="${cy.order.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="orderPayService" interface="com.cy.order.service.OrderPayService"
+                     version="${cy.order.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="oilCardService" interface="com.cy.order.service.OilCardService"
+                     version="${cy.order.service.default.version}" retries="0" timeout="650000"/>
+
+    <!--platform-pay-->
+    <dubbo:reference id="accountBankService" interface="com.cy.platformpay.service.AccountBankService"
+                     version="${cy.platform.pay.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="accountBillService" interface="com.cy.platformpay.service.AccountBillService"
+                     version="${cy.platform.pay.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="capitalAccountService" interface="com.cy.platformpay.service.CapitalAccountService"
+                     version="${cy.platform.pay.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="cashTradeService" interface="com.cy.platformpay.service.CashTradeService"
+                     version="${cy.platform.pay.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="payTradeService" interface="com.cy.platformpay.service.PayTradeService"
+                     version="${cy.platform.pay.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="rechargeTradeService" interface="com.cy.platformpay.service.RechargeTradeService"
+                     version="${cy.platform.pay.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="bankWyhlCardbinService" interface="com.cy.platformpay.service.BankWyhlCardbinService"
+                     version="${cy.platform.pay.service.default.version}" retries="0" timeout="650000"/>
+
+    <!--Search-->
+    <dubbo:reference id="searchCargoService" interface="com.cy.search.service.SearchCargoService"
+                     version="${search.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="searchDriverService" interface="com.cy.search.service.SearchDriverService"
+                     version="${search.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="buildBrowseCargoIndexService" interface="com.cy.search.service.BuildBrowseCargoIndexService"
+                     version="${search.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="searchBrowseCargoService" interface="com.cy.search.service.SearchBrowseCargoService"
+                     version="${search.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="searchCargoQuoteService" interface="com.cy.search.service.SearchCargoQuoteService"
+                     version="${search.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="searchOrderService2" interface="com.cy.search.service.SearchOrderService"
+                     version="${search.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="buildOrderIndexService" interface="com.cy.search.service.BuildOrderIndexService"
+                     version="${search.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="searchCargo2Service" interface="com.cy.search.service.SearchCargo2Service"
+                     version="${search.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="searchCargo3Service" interface="com.cy.search.service.SearchCargo3Service"
+                     version="${search.default.version}" retries="0" timeout="650000"/>
+
+    <!--奖励服务-->
+    <dubbo:reference id="pointService" interface="com.cy.award.service.PointService"
+                     version="${award.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="exchangeActivityService" interface="com.cy.award.service.ExchangeActivityService"
+                     version="${award.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="awardAccountService" interface="com.cy.award.service.AccountService"
+                     version="${award.default.version}" retries="0" timeout="650000"/>
+
+
+    <!--rdc-service-->
+    <dubbo:reference id="carrierQuoteService" interface="com.cy.rdcservice.service.CarrierQuoteService"
+                     version="${rdc.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="carrierAssessService" interface="com.cy.rdcservice.service.CarrierAssessService"
+                     version="${rdc.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="carrierService" interface="com.cy.rdcservice.service.CarrierService"
+                     version="${rdc.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="waybillAssessService" interface="com.cy.rdcservice.service.WaybillAssessService"
+                     version="${rdc.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="waybillInfoService" interface="com.cy.rdcservice.service.WaybillInfoService"
+                     version="${rdc.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="waybillOperService" interface="com.cy.rdcservice.service.WaybillOperService"
+                     version="${rdc.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="userService" interface="com.cy.rdcservice.service.UserService"
+                     version="${rdc.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="userAuthService" interface="com.cy.rdcservice.service.UserAuthService"
+                     version="${rdc.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="userItemStatService" interface="com.cy.rdcservice.service.UserItemStatService"
+                     version="${rdc.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="carrierTrackingService" interface="com.cy.rdcservice.service.CarrierTrackingService"
+                     version="${rdc.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="instationMessageService" interface="com.cy.rdcservice.service.InstationMessageService"
+                     version="${rdc.service.default.version}" retries="0" timeout="650000"/>
+
+
+    <!--rdc-basic-->
+    <dubbo:reference id="systemConfigService" interface="com.cy.basic.service.SystemConfigService"
+                     version="${rdc.basic.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="systemProtocolService" interface="com.cy.basic.service.SystemProtocolService"
+                     version="${rdc.basic.default.version}" retries="0" timeout="650000"/>
+
+    <!-- saas-business -->
+    <dubbo:reference id="orderInfoService" interface="com.cy.saas.business.service.OrderService"
+                     version="${rdc.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="orderOperService" interface="com.cy.saas.business.service.OrderOperService"
+                     version="${rdc.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="accountUserService" interface="com.cy.saas.basic.service.AccountUserService"
+                     version="${rdc.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="settingBusinessService" interface="com.cy.saas.basic.service.SettingBusinessService"
+                     version="${rdc.service.default.version}" retries="0" timeout="650000"/>
+
+    <dubbo:reference id="saWaybillInfoService" interface="com.cy.saas.business.service.WaybillInfoService"
+                     version="${rdc.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="saCarrierService" interface="com.cy.saas.business.service.CarrierService"
+                     version="${rdc.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="saUserItemStatService" interface="com.cy.saas.business.service.UserItemStatService"
+                     version="${rdc.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="utmsTradeService" interface="com.cy.saas.business.service.TradeService"
+                     version="${rdc.service.default.version}" retries="0" timeout="650000"/>
+
+    <dubbo:reference id="saWaybillOperService" interface="com.cy.saas.business.service.WaybillOperService"
+                     version="${rdc.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="saCarrierTrackingService" interface="com.cy.saas.business.service.CarrierTrackingService"
+                     version="${rdc.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="saSystemProtocolService" interface="com.cy.saas.basic.service.SystemProtocolService"
+                     version="${rdc.service.default.version}" retries="0" timeout="650000"/>
+
+    <dubbo:reference id="utmsPayUserService" interface="com.cy.saas.pay.service.PayUserService"
+                     version="${rdc.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="utmsPayBankService" interface="com.cy.saas.pay.service.PayBankService"
+                     version="${rdc.service.default.version}" retries="0" timeout="650000"/>
+    <dubbo:reference id="utmsPayMybankTradeService" interface="com.cy.saas.pay.service.PayMybankTradeService"
+                     version="${rdc.service.default.version}" retries="0" timeout="650000"/>
+
+
+
+</beans>
