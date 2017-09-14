@@ -21,7 +21,6 @@ import java.io.IOException;
 /**
  * Created by Administrator on 2015/9/12.
  */
-@Component("authenticationInterceptor")
 public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
 
 

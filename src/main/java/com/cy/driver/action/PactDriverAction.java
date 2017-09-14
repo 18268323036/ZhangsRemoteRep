@@ -25,6 +25,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -37,7 +38,7 @@ import java.util.List;
  * Created by wyh on 2015/7/6.
  */
 @Scope("prototype")
-@Controller("pactDriverAction")
+@RestController("pactDriverAction")
 public class PactDriverAction extends BaseAction {
     private static Logger logger = LoggerFactory.getLogger(PactDriverAction.class);
     @Resource

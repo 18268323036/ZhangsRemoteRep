@@ -25,7 +25,6 @@ import java.lang.reflect.Method;
  * 请求响应头拦截
  * Created by wyh on 2015/5/7.
  */
-@Component("reqRespHeadInterceptor")
 public class ReqRespHeadInterceptor extends HandlerInterceptorAdapter {
     @SuppressWarnings("unused")
     private static Logger logger = LoggerFactory.getLogger(ReqRespHeadInterceptor.class);

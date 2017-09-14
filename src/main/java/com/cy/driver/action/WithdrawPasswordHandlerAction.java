@@ -22,6 +22,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -32,7 +33,7 @@ import javax.servlet.http.HttpServletResponse;
  *提现密码管理
  */
 @Scope("prototype")
-@Controller("withdrawPasswordHandlerAction")
+@RestController("withdrawPasswordHandlerAction")
 @RequestMapping(value = "/safeSSL")
 public class WithdrawPasswordHandlerAction extends BaseAction {
 

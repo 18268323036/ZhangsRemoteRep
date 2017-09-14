@@ -25,6 +25,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -38,7 +39,7 @@ import java.util.Map;
  * 类描述： 作者 yanst 创建时间： 2015-6-19 下午2:59:10
  */
 @Scope("prototype")
-@Controller("loginAction")
+@RestController("loginAction")
 public class LoginAction extends BaseAction {
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 

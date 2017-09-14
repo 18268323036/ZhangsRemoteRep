@@ -16,6 +16,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -25,6 +26,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  * @author zhangxy 2017/9/6 17:17
  */
 @Configuration
+@ComponentScan(basePackages="com.cy.driver")
 public class AppConfig extends WebMvcConfigurerAdapter {
 
     @Bean
@@ -56,12 +58,22 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         return passwordClientImpl;
     }
 
+    @Bean
+    public ReqRespHeadInterceptor getReqRespHeadInterceptor(){
+        return new ReqRespHeadInterceptor();
+    }
+
+    @Bean
+    public PermissionValidationInterceptor getPermissionValidationInterceptor(){
+        return new PermissionValidationInterceptor();
+    }
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         // 多个拦截器组成一个拦截器链
         // addPathPatterns 用于添加拦截规则
         // excludePathPatterns 用户排除拦截
-        registry.addInterceptor(new ReqRespHeadInterceptor())
+        registry.addInterceptor(getReqRespHeadInterceptor())
                 .addPathPatterns("/*")
                 .addPathPatterns("/safeSSL/*")
                 .excludePathPatterns("/images")
@@ -79,7 +91,8 @@ public class AppConfig extends WebMvcConfigurerAdapter {
                 .excludePathPatterns("/messageToBusinessDetail")
                 .excludePathPatterns("/modifyMessageState")
                 .excludePathPatterns("/getTurnWaybillTransportPro");
-        registry.addInterceptor(new PermissionValidationInterceptor())
+//                .excludePathPatterns("/httpsTest");
+        registry.addInterceptor(getPermissionValidationInterceptor())
                 .addPathPatterns("/*")
                 .addPathPatterns("/safeSSL/*")
                 .excludePathPatterns("/images")
@@ -109,6 +122,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
                 .excludePathPatterns("/messageToBusinessDetail")
                 .excludePathPatterns("/modifyMessageState")
                 .excludePathPatterns("/getTurnWaybillTransportPro");
+//                .excludePathPatterns("/httpsTest");
         super.addInterceptors(registry);
     }
 

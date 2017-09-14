@@ -47,6 +47,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
@@ -59,7 +60,7 @@ import java.util.*;
  * @author yanst 2016/5/26 13:57
  */
 @Scope("prototype")
-@Controller
+@RestController
 public class NearAndFindCargoController extends BaseAction {
 
     private Logger LOG = LoggerFactory.getLogger(NearAndFindCargoController.class);

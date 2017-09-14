@@ -46,6 +46,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.math.BigDecimal;
@@ -55,7 +56,7 @@ import java.util.*;
  * @author zhangxy 2016/6/1 14:21
  */
 @Scope("prototype")
-@Controller
+@RestController
 public class WaybillHandlerController extends BaseAction {
 
     private Logger LOG = LoggerFactory.getLogger(WaybillHandlerController.class);

@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
@@ -17,7 +18,7 @@ import javax.annotation.Resource;
  * Created by wyh on 2016/1/14.
  */
 @Scope("prototype")
-@Controller
+@RestController
 @RequestMapping("/view")
 public class ViewAction extends BaseAction {
     private static final Logger LOG = LoggerFactory.getLogger(ViewAction.class);

@@ -19,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -31,7 +32,7 @@ import java.util.Map;
  * Created by wyh on 2015/7/28.
  */
 @Scope("prototype")
-@Controller("locationAction")
+@RestController("locationAction")
 public class LocationAction extends BaseAction {
     private static Logger logger = LoggerFactory.getLogger(LocationAction.class);
     @Resource

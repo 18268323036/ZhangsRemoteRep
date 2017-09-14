@@ -37,6 +37,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.math.BigDecimal;
@@ -50,7 +51,7 @@ import java.util.Map;
  * Created by nixianjing on 16/8/2.
  */
 @Scope("prototype")
-@Controller
+@RestController
 public class WaybillOrderController extends BaseAction {
 
     private Logger LOG = LoggerFactory.getLogger(WaybillOrderController.class);

@@ -28,6 +28,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -39,7 +40,7 @@ import java.util.Map;
  * @author yanst 2016/5/26 15:48
  */
 @Scope("prototype")
-@Controller
+@RestController
 public class UserInfoController extends BaseAction {
 
     private Logger LOG = LoggerFactory.getLogger(this.getClass());

@@ -29,7 +29,6 @@ import java.util.Date;
  * @author <p>yanst </p>
  * @since 
  */
-@Component("permissionValidationInterceptor")
 public class PermissionValidationInterceptor extends HandlerInterceptorAdapter {
     private static Logger logger = LoggerFactory.getLogger(PermissionValidationInterceptor.class);
 

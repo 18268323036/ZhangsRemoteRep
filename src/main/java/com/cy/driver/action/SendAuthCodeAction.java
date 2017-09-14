@@ -18,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -29,7 +30,7 @@ import java.util.Map;
  * Created by mr on 2015/6/23.
  */
 @Scope("prototype")
-@Controller("sendAuthAction")
+@RestController("sendAuthAction")
 public class SendAuthCodeAction extends BaseAction{
     private Logger LOG = LoggerFactory.getLogger(SendAuthCodeAction.class);
     @Resource

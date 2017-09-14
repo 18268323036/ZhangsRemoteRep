@@ -22,6 +22,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
@@ -31,7 +32,7 @@ import java.util.List;
 import java.util.Map;
 
 @Scope("prototype")
-@Controller("initDataAction")
+@RestController("initDataAction")
 public class InitDataAction extends BaseAction {
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 

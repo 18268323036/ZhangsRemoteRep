@@ -1,7 +1,9 @@
 package com.cy.driver;
 
+import com.cy.driver.action.BaseAction;
 import com.cy.driver.common.initdata.SystemData;
 import com.cy.driver.common.redis.RedisService;
+import com.cy.driver.domain.BankBO;
 import com.cy.driver.service.DriverUserHandlerService;
 import com.cy.saas.basic.model.dto.AccountUserDetails2DTO;
 import com.cy.saas.basic.service.AccountUserService;
@@ -15,7 +17,7 @@ import javax.annotation.Resource;
 
 @SpringBootApplication
 @RestController
-public class DasApplication {
+public class DasApplication extends BaseAction{
 
 	@Resource
 	private DriverUserHandlerService driverUserHandlerService;
@@ -29,12 +31,16 @@ public class DasApplication {
 		SpringApplication.run(DasApplication.class, args);
 	}
 
-	@RequestMapping("/")
-	public String greeting() {
+	@RequestMapping("/httpsTest")
+	public Object greeting() {
 		System.out.println(driverUserHandlerService.getCarInfo(String.valueOf(100)));
 		System.out.println(systemData);
 		String s = redisService.getStr("hello");
 		redisService.setStr("hello","World",20);
-		return "Hello world";
+		BankBO bankBO = new BankBO();
+		bankBO.setBankCode("112233445566");
+		bankBO.setBankId(123456l);
+		bankBO.setBankName("中国农业银行");
+		return bankBO;
 	}
 }

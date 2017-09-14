@@ -22,6 +22,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -35,7 +36,7 @@ import java.util.Map;
  * Created by Administrator on 2015/9/10.
  */
 @Scope("prototype")
-@Controller("bankCardHandlerAction")
+@RestController("bankCardHandlerAction")
 public class BankCardHandlerAction extends BaseAction{
 
     private Logger LOG = LoggerFactory.getLogger(BankCardHandlerAction.class);

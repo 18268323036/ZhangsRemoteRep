@@ -19,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
@@ -28,7 +29,7 @@ import java.math.BigDecimal;
  * @author yanst 2016/4/19 19:34
  */
 @Scope("prototype")
-@Controller("myWalletAction")
+@RestController("myWalletAction")
 public class MyWalletAction extends BaseAction {
 
     private Logger LOG = LoggerFactory.getLogger(MyWalletAction.class);

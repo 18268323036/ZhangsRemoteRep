@@ -21,6 +21,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
@@ -33,7 +34,7 @@ import java.util.List;
  * @author yanst 2016/4/20 11:09
  */
 @Scope("prototype")
-@Controller("cargoBrowseRecordAction")
+@RestController("cargoBrowseRecordAction")
 public class CargoBrowseRecordAction extends BaseAction {
 
     private Logger LOG = LoggerFactory.getLogger(CargoBrowseRecordAction.class);

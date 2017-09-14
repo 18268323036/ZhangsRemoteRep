@@ -21,6 +21,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
@@ -30,7 +31,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Created by Administrator on 2015/8/11.
  */
-@Controller("cargoShareAction")
+@RestController("cargoShareAction")
 @Scope("prototype")
 @RequestMapping(value = "/share")
 public class CargoShareAction extends BaseAction{

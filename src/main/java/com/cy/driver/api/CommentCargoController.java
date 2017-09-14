@@ -30,6 +30,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
@@ -44,7 +45,7 @@ import java.util.Map;
  * @author yanst 2016/5/26 15:43
  */
 @Scope("prototype")
-@Controller
+@RestController
 public class CommentCargoController extends BaseAction {
 
     @Resource
