@@ -92,7 +92,7 @@ public class NearAndFindCargoController extends BaseAction {
     @Resource
     private OwnerItemService ownerItemService;
 
-    @Value("#{propertiesReader['debang.driver.code']}")
+    @Value("${'debang.driver.code'}")
     public void setDebangDriverCode(String debangDriverCode) {
         this.debangDriverCode = debangDriverCode;
     }

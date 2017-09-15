@@ -37,7 +37,7 @@ public class PasswordClientImpl extends RedisService implements PasswordClient {
      *@reurn boolean :true 超过
      */
     public boolean havePassLimit(Long driverId){
-        String str = super.getStr(DRIVER_PASSWORD_WITHDRAW+driverId);
+        String str = (String)super.getStr(DRIVER_PASSWORD_WITHDRAW+driverId);
         Integer count = 1;
         if(StringUtils.isNotBlank(str)){
             count = Integer.valueOf(str)+1;

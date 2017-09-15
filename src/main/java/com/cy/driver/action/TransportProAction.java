@@ -49,7 +49,7 @@ public class TransportProAction extends BaseAction {
     private static Logger logger = LoggerFactory.getLogger(AppShareAction.class);
 
     private String fileServiceUrl;
-    @Value("#{propertiesReader['fileService.url']}")
+    @Value("${'fileService.url'}")
     public void setFileServiceUrl(String fileServiceUrl){
         this.fileServiceUrl = fileServiceUrl;
     }

@@ -71,14 +71,14 @@ public class HomeNumInfoServiceImpl implements HomeNumInfoService {
              */
             homeOtherCountsBO.setQuoteNums(myQuoteInfoHandleService.myQuoteNum(driverId));
 
-            String orderDateCarriage = redisService.getStr(String.valueOf(driverId));
+            String orderDateCarriage = (String)redisService.getStr(String.valueOf(driverId));
             com.cy.order.service.dto.base.Response<Integer> resultwaitOrderNums = orderService.countOrders(driverId, OrderOuterState.WAIT_TRANSPORT.getValue(),orderDateCarriage!=null? DateUtil.parseDate(orderDateCarriage+" 00:00:00", DateUtil.F_DATETIME):null );
             //待承运订单数量
             if(resultwaitOrderNums.isSuccess()){
                 homeOtherCountsBO.setWaitOrderNums(resultwaitOrderNums.getData());
             }
 
-            String orderDateCarried = redisService.getStr(String.valueOf(driverId));
+            String orderDateCarried = (String)redisService.getStr(String.valueOf(driverId));
             com.cy.order.service.dto.base.Response<Integer> resultOrderNums = orderService.countOrders(driverId,  OrderOuterState.TRANSPORT_ING.getValue(), orderDateCarried!=null? DateUtil.parseDate(orderDateCarried+" 00:00:00", DateUtil.F_DATETIME):null);
             //承运订单数量
             if(resultOrderNums.isSuccess()){

@@ -23,7 +23,7 @@ public class NetWordPhoneClientImpl extends RedisService implements NetWordPhone
      * @return
      */
     public String getNumberLimit(String driverId){
-        return super.getStr(NUMBER_LIMIT+driverId);
+        return (String)super.getStr(NUMBER_LIMIT+driverId);
     }
 
     /**
@@ -33,7 +33,7 @@ public class NetWordPhoneClientImpl extends RedisService implements NetWordPhone
      */
     public void putNumberLimit(String driverId, String cargoId){
         try {
-            String cargoIdsStr = super.getStr(NUMBER_LIMIT + driverId);
+            String cargoIdsStr = (String)super.getStr(NUMBER_LIMIT + driverId);
             if (StringUtils.isEmpty(cargoIdsStr)) {
                 cargoIdsStr = cargoId;
             }else{
@@ -69,7 +69,7 @@ public class NetWordPhoneClientImpl extends RedisService implements NetWordPhone
             if(state != null && state.intValue() == 3){//已认证用户
                 return "0";
             }
-            String cargoIdsStr = super.getStr(NUMBER_LIMIT + driverId);
+            String cargoIdsStr = (String)super.getStr(NUMBER_LIMIT + driverId);
             if (StringUtils.isEmpty(cargoIdsStr)) {
                 return "0";
             } else {

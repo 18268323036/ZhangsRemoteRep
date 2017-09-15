@@ -16,6 +16,7 @@ import com.cy.driver.common.constants.Constants;
 import com.cy.driver.common.enumer.ApiReqCodeEnum;
 import com.cy.driver.common.initdata.SystemData;
 import com.cy.driver.common.redis.NetWordPhoneClient;
+import com.cy.driver.common.redis.RedisService;
 import com.cy.driver.common.syslog.Log;
 import com.cy.driver.common.syslog.LogEnum;
 import com.cy.driver.common.util.DateUtil;
@@ -68,27 +69,27 @@ public class CargoHandlerAction extends BaseAction {
     private int confineNoAuthBroPage;
     private String debangDriverCode;
 
-    @Value("#{propertiesReader['protect.data.browseNum.authed']}")
+    @Value("${'protect.data.browseNum.authed'}")
     public void setConfineAuthBroNum(int confineAuthBroNum) {
         this.confineAuthBroNum = confineAuthBroNum;
     }
 
-    @Value("#{propertiesReader['protect.data.browseNum.noAuthed']}")
+    @Value("${'protect.data.browseNum.noAuthed'}")
     public void setConfineNoAuthBroNum(int confineNoAuthBroNum) {
         this.confineNoAuthBroNum = confineNoAuthBroNum;
     }
 
-    @Value("#{propertiesReader['protect.data.browsePage.authed']}")
+    @Value("${'protect.data.browsePage.authed'}")
     public void setConfineAuthBroPage(int confineAuthBroPage) {
         this.confineAuthBroPage = confineAuthBroPage;
     }
 
-    @Value("#{propertiesReader['protect.data.browsePage.noAuthed']}")
+    @Value("${'protect.data.browsePage.noAuthed'}")
     public void setConfineNoAuthBroPage(int confineNoAuthBroPage) {
         this.confineNoAuthBroPage = confineNoAuthBroPage;
     }
 
-    @Value("#{propertiesReader['debang.driver.code']}")
+    @Value("${'debang.driver.code'}")
     public void setDebangDriverCode(String debangDriverCode) {
         this.debangDriverCode = debangDriverCode;
     }
@@ -124,7 +125,7 @@ public class CargoHandlerAction extends BaseAction {
     @Resource
     private DriverLineTrackService driverLineTrackService;
     @Resource
-    private RedisData redisData;
+    private RedisService redisService;
     @Resource
     private DriverLinePointService driverLinePointService;
     @Resource
@@ -647,11 +648,11 @@ public class CargoHandlerAction extends BaseAction {
                 if(StringUtils.isEmpty(driverCity)) {
                     //限制司机查看货源详情数量
                     String key = "das:cargo:lookcargo:" + userId;
-                    Object obj = redisData.get(key);
+                    Object obj = redisService.getObj(key);
                     if (null == obj) {
                         HashSet<String> set = new HashSet<>();
                         set.add(String.valueOf(cargoId));
-                        redisData.put(key, set, DateUtil.getTomorrowDate2(new Date(), 1));
+                        redisService.setStr(key, set, DateUtil.getTomorrowDate2(new Date(), 1));
                     } else {
                         HashSet<String> set = (HashSet<String>) obj;
                         int count = set.size();
@@ -662,7 +663,7 @@ public class CargoHandlerAction extends BaseAction {
                                 }
                             }
                             set.add(String.valueOf(cargoId));
-                            redisData.put(key, set, DateUtil.getTomorrowDate2(new Date(), 1));
+                            redisService.setStr(key, set, DateUtil.getTomorrowDate2(new Date(), 1));
                         } else {
                             if (count >= confineAuthBroNum) {
                                 if (!set.contains(String.valueOf(cargoId))) {
@@ -670,7 +671,7 @@ public class CargoHandlerAction extends BaseAction {
                                 }
                             }
                             set.add(String.valueOf(cargoId));
-                            redisData.put(key, set, DateUtil.getTomorrowDate2(new Date(), 1));
+                            redisService.setStr(key, set, DateUtil.getTomorrowDate2(new Date(), 1));
                         }
                     }
                 }else {
@@ -1181,7 +1182,7 @@ public class CargoHandlerAction extends BaseAction {
     }
 
 
-    @Value("#{propertiesReader['newUser.redPackets.activityName']}")
+    @Value("${'newUser.redPackets.activityName'}")
     public void setActivityName(String activityName) {
         this.activityName = activityName;
     }

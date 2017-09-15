@@ -66,7 +66,7 @@ public class MyQuoteInfoHandleServiceImpl implements MyQuoteInfoHandleService {
      */
     @Override
     public int myQuoteNum(Long driverId) {
-        String quoteDate = redisService.getStr(String.valueOf(driverId));
+        String quoteDate = (String)redisService.getStr(String.valueOf(driverId));
         Response<Integer> response = quoteService.queryMyQuoteCounts(driverId, quoteDate);
         if (!response.isSuccess()) {
             LOG.error("调用cargo服务查询我的报价数量失败，失败信息={}", response.getMessage());

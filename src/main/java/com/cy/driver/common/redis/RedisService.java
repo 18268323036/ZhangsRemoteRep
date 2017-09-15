@@ -20,7 +20,7 @@ public class RedisService {
     StringRedisTemplate stringRedisTemplate;
 
     @Resource(name = "stringRedisTemplate")
-    ValueOperations<String, String> valOpsStr;
+    ValueOperations<String, Object> valOpsStr;
 
     @Autowired
     RedisTemplate<Object, Object> redisTemplate;
@@ -33,7 +33,7 @@ public class RedisService {
      * @param key
      * @return
      */
-    public String getStr(String key){
+    public Object getStr(String key){
         return valOpsStr.get(key);
     }
 
@@ -63,6 +63,11 @@ public class RedisService {
         }else{
             valOpsStr.set(key,val,ttl,TimeUnit.SECONDS);
         }
+    }
+
+    public void setStr(String key,Object obj, Date delTime){
+        long time = delTime.getTime()-new Date().getTime();
+        valOpsStr.set(key,obj,time/1000);
     }
 
     /**

@@ -90,8 +90,8 @@ public class AppConfig extends WebMvcConfigurerAdapter {
                 .excludePathPatterns("/getTransprotPro")
                 .excludePathPatterns("/messageToBusinessDetail")
                 .excludePathPatterns("/modifyMessageState")
-                .excludePathPatterns("/getTurnWaybillTransportPro");
-//                .excludePathPatterns("/httpsTest");
+                .excludePathPatterns("/getTurnWaybillTransportPro")
+                .excludePathPatterns("/httpsTest");
         registry.addInterceptor(getPermissionValidationInterceptor())
                 .addPathPatterns("/*")
                 .addPathPatterns("/safeSSL/*")
@@ -121,8 +121,8 @@ public class AppConfig extends WebMvcConfigurerAdapter {
                 .excludePathPatterns("/getTransprotPro")
                 .excludePathPatterns("/messageToBusinessDetail")
                 .excludePathPatterns("/modifyMessageState")
-                .excludePathPatterns("/getTurnWaybillTransportPro");
-//                .excludePathPatterns("/httpsTest");
+                .excludePathPatterns("/getTurnWaybillTransportPro")
+                .excludePathPatterns("/httpsTest");
         super.addInterceptors(registry);
     }
 

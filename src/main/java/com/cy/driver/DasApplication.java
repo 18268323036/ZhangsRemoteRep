@@ -35,8 +35,9 @@ public class DasApplication extends BaseAction{
 	public Object greeting() {
 		System.out.println(driverUserHandlerService.getCarInfo(String.valueOf(100)));
 		System.out.println(systemData);
-		String s = redisService.getStr("hello");
+		String s = (String)redisService.getStr("hello");
 		redisService.setStr("hello","World",20);
+		redisService.getStr("hello");
 		BankBO bankBO = new BankBO();
 		bankBO.setBankCode("112233445566");
 		bankBO.setBankId(123456l);
