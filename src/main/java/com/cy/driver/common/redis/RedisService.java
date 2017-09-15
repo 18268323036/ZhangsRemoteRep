@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
 import java.util.Date;
@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author zhangxy 2017/9/5 17:18
  */
-@Service
+@Repository
 public class RedisService {
 
     @Autowired

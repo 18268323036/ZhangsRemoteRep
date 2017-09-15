@@ -19,6 +19,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -45,7 +48,6 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         return configData;
     }
 
-    @Order(value=9)
     @Bean(initMethod = "execu")
     public SystemData systemData(){
         SystemData systemData = new SystemData();
@@ -67,6 +69,8 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     public PermissionValidationInterceptor getPermissionValidationInterceptor(){
         return new PermissionValidationInterceptor();
     }
+
+
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {

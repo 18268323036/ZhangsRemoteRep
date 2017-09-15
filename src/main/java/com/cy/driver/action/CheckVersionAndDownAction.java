@@ -143,12 +143,12 @@ public class CheckVersionAndDownAction extends BaseAction {
 		return JSonResponse.makeHasContentJSonRespone(ApiResultCodeEnum.SYS_10001);
 	}
 
-    @Value("${'apk.path.android'}")
+    @Value("${apk.path.android}")
     public void setApkPathAndroidUrl(String apkPathAndroidUrl) {
         this.apkPathAndroidUrl = apkPathAndroidUrl;
     }
 
-    @Value("${'apk.path.ios'}")
+    @Value("${apk.path.ios}")
     public void setApkIosUrl(String apkIosUrl) {
         this.apkIosUrl = apkIosUrl;
     }

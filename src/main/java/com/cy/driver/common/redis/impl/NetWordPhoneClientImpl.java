@@ -6,12 +6,14 @@ import com.cy.driver.common.util.DateUtil;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 
 /**
  * Created by Administrator on 2015/9/8.
  */
+@Service
 public class NetWordPhoneClientImpl extends RedisService implements NetWordPhoneClient {
     private static Logger logger = LoggerFactory.getLogger(NetWordPhoneClientImpl.class);
     private static final String NUMBER_LIMIT = "cargo:network:limit:";//网络电话次数限制

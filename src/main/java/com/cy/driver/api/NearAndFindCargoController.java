@@ -17,6 +17,7 @@ import com.cy.driver.common.annotate.ReqRespHeadCode;
 import com.cy.driver.common.constants.Constants;
 import com.cy.driver.common.enumer.ApiReqCodeEnum;
 import com.cy.driver.common.redis.NetWordPhoneClient;
+import com.cy.driver.common.redis.RedisService;
 import com.cy.driver.common.syslog.Log;
 import com.cy.driver.common.syslog.LogEnum;
 import com.cy.driver.common.util.DateUtil;
@@ -72,7 +73,7 @@ public class NearAndFindCargoController extends BaseAction {
     @Resource
     private MyQuoteInfoHandleService myQuoteInfoHandleService;
     @Resource
-    private RedisData redisData;
+    private RedisService redisService;
     @Resource
     private TrackPointService trackPointService;
     @Resource
@@ -92,7 +93,7 @@ public class NearAndFindCargoController extends BaseAction {
     @Resource
     private OwnerItemService ownerItemService;
 
-    @Value("${'debang.driver.code'}")
+    @Value("${debang.driver.code}")
     public void setDebangDriverCode(String debangDriverCode) {
         this.debangDriverCode = debangDriverCode;
     }
@@ -400,11 +401,11 @@ public class NearAndFindCargoController extends BaseAction {
      */
     public Object checkCount(Long cargoId, Long userId) {
         String key = "das:cargo:lookcargo:" + userId;
-        Object obj = redisData.get(key);
+        Object obj = redisService.getObj(key);
         if (null == obj) {
             HashSet<String> set = new HashSet<>();
             set.add(String.valueOf(cargoId));
-            redisData.put(key, set, DateUtil.getTomorrowDate2(new Date(), 1));
+            redisService.setStr(key, set, DateUtil.getTomorrowDate2(new Date(), 1));
             return null;
         } else {
             HashSet<String> set = (HashSet<String>) obj;
@@ -416,7 +417,7 @@ public class NearAndFindCargoController extends BaseAction {
                     }
                 }
                 set.add(String.valueOf(cargoId));
-                redisData.put(key, set, DateUtil.getTomorrowDate2(new Date(), 1));
+                redisService.setStr(key, set, DateUtil.getTomorrowDate2(new Date(), 1));
                 return null;
             } else {
                 if (count >= 100) {
@@ -425,7 +426,7 @@ public class NearAndFindCargoController extends BaseAction {
                     }
                 }
                 set.add(String.valueOf(cargoId));
-                redisData.put(key, set, DateUtil.getTomorrowDate2(new Date(), 1));
+                redisService.setStr(key, set, DateUtil.getTomorrowDate2(new Date(), 1));
                 return null;
             }
         }

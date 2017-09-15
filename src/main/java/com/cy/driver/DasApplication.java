@@ -8,6 +8,7 @@ import com.cy.driver.service.DriverUserHandlerService;
 import com.cy.saas.basic.model.dto.AccountUserDetails2DTO;
 import com.cy.saas.basic.service.AccountUserService;
 import com.cy.top56.common.Response;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RequestMapping;

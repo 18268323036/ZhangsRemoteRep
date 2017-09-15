@@ -18,8 +18,9 @@ import com.cy.driver.domain.PageComm;
 import com.cy.driver.service.PointFService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 /**
  * @author rui.mao
@@ -30,11 +31,11 @@ import org.springframework.stereotype.Service;
 @Service("pointFService")
 public class PointFServiceImpl implements PointFService {
     private static final Logger LOG = LoggerFactory.getLogger(PointFServiceImpl.class);
-    @Autowired
-    private AccountService accountService;
-    @Autowired
+    @Resource
+    private AccountService awardAccountService;
+    @Resource
     private PointService pointService;
-    @Autowired
+    @Resource
     private ExchangeActivityService exchangeActivityService;
 
     @Override
@@ -42,7 +43,7 @@ public class PointFServiceImpl implements PointFService {
         AwardAccountDTO paramDTO = new AwardAccountDTO();
         paramDTO.setUserId(driverId);
         paramDTO.setUserType(Constants.AWARD_DRIVER);
-        Response<String> response = accountService.saveAccount(paramDTO);
+        Response<String> response = awardAccountService.saveAccount(paramDTO);
         if (response == null || !response.isSuccess() || response.getData() == null) {
             LOG.error("开通奖励账户:[award服务返回空],param={}", driverId);
             return null;

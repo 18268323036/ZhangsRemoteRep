@@ -250,7 +250,7 @@ public class RegistAction extends BaseAction {
         }
     }
 
-    @Value("${'newUser.redPackets.activityName']}")
+    @Value("${newUser.redPackets.activityName]}")
     public void setActivityName(String activityName) {
         this.activityName = activityName;
     }

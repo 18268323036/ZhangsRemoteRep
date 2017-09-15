@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -50,11 +51,11 @@ public class SystemData {
     //app的位置上传定时的时间(分钟)
     private static String appLocMinutes;
 
-    @Autowired
+    @Resource
     private InitDataService initDataService;
-    @Autowired
+    @Resource
     private VehicleCarriageService vehicleCarriageService;
-    @Autowired
+    @Resource
     private LocationService locationService;
 
     public void execu(){

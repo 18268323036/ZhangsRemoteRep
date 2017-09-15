@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Field;
@@ -25,9 +26,10 @@ import java.util.Enumeration;
  */
 @RestController
 public class BaseAction {
-    @Autowired
-    protected HttpServletRequest request;
 
+    @Resource
+    protected HttpServletRequest request;
+    @Resource
     protected HttpServletResponse response;
 
     Logger LOG = LoggerFactory.getLogger(BaseAction.class);

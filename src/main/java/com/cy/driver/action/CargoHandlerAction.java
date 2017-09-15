@@ -69,27 +69,27 @@ public class CargoHandlerAction extends BaseAction {
     private int confineNoAuthBroPage;
     private String debangDriverCode;
 
-    @Value("${'protect.data.browseNum.authed'}")
+    @Value("${protect.data.browseNum.authed}")
     public void setConfineAuthBroNum(int confineAuthBroNum) {
         this.confineAuthBroNum = confineAuthBroNum;
     }
 
-    @Value("${'protect.data.browseNum.noAuthed'}")
+    @Value("${protect.data.browseNum.noAuthed}")
     public void setConfineNoAuthBroNum(int confineNoAuthBroNum) {
         this.confineNoAuthBroNum = confineNoAuthBroNum;
     }
 
-    @Value("${'protect.data.browsePage.authed'}")
+    @Value("${protect.data.browsePage.authed}")
     public void setConfineAuthBroPage(int confineAuthBroPage) {
         this.confineAuthBroPage = confineAuthBroPage;
     }
 
-    @Value("${'protect.data.browsePage.noAuthed'}")
+    @Value("${protect.data.browsePage.noAuthed}")
     public void setConfineNoAuthBroPage(int confineNoAuthBroPage) {
         this.confineNoAuthBroPage = confineNoAuthBroPage;
     }
 
-    @Value("${'debang.driver.code'}")
+    @Value("${debang.driver.code}")
     public void setDebangDriverCode(String debangDriverCode) {
         this.debangDriverCode = debangDriverCode;
     }
@@ -218,7 +218,7 @@ public class CargoHandlerAction extends BaseAction {
             }
             Map<String, Object> map = new HashMap<String, Object>();
             com.cy.search.service.dto.base.PageResult<Cargo2DTO> pageResult = searchCargoHandlerService.accurateCargo3(driverId, page.intValue(),lastLoc,carLength,carWeight,carCubage,vehicleType,carriageType);
-            if (pageResult.isSuccess() && pageResult!=null && pageResult.getDataList()!=null) {
+            if (pageResult.isSuccess() && pageResult!=null) {
                 map.put("cargoAllNums", pageResult.getTotalRecord());
                 map.put("cargoAllPage", pageResult.getTotalPage());
                 for (Cargo2DTO cargoDTO : pageResult.getDataList()) {
@@ -1182,7 +1182,7 @@ public class CargoHandlerAction extends BaseAction {
     }
 
 
-    @Value("${'newUser.redPackets.activityName'}")
+    @Value("${newUser.redPackets.activityName}")
     public void setActivityName(String activityName) {
         this.activityName = activityName;
     }
