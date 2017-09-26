@@ -29,47 +29,46 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  * @author zhangxy 2017/9/6 17:17
  */
 @Configuration
-@ComponentScan(basePackages="com.cy.driver")
+@ComponentScan(basePackages = "com.cy.driver")
 public class AppConfig extends WebMvcConfigurerAdapter {
 
     @Bean
-    public ObjectMapper ObjectMapper(){
-        ObjectMapper objectMapper=new ObjectMapper();
+    public ObjectMapper ObjectMapper() {
+        ObjectMapper objectMapper = new ObjectMapper();
         // 忽略json字符串中不识别的属性
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         // 忽略无法转换的对象 “No serializer found for class com.xxx.xxx”
-        objectMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS,false);
+        objectMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
         return objectMapper;
     }
 
     @Bean
-    public ConfigData configData(){
+    public ConfigData configData() {
         ConfigData configData = new ConfigData();
         return configData;
     }
 
     @Bean(initMethod = "execu")
-    public SystemData systemData(){
+    public SystemData systemData() {
         SystemData systemData = new SystemData();
         return systemData;
     }
 
     @Bean
-    public PasswordClient passwordClient(){
+    public PasswordClient passwordClient() {
         PasswordClientImpl passwordClientImpl = new PasswordClientImpl();
         return passwordClientImpl;
     }
 
     @Bean
-    public ReqRespHeadInterceptor getReqRespHeadInterceptor(){
+    public ReqRespHeadInterceptor getReqRespHeadInterceptor() {
         return new ReqRespHeadInterceptor();
     }
 
     @Bean
-    public PermissionValidationInterceptor getPermissionValidationInterceptor(){
+    public PermissionValidationInterceptor getPermissionValidationInterceptor() {
         return new PermissionValidationInterceptor();
     }
-
 
 
     @Override

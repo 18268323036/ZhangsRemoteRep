@@ -39,7 +39,8 @@ public class ApiControllerProxy {
     private DriverLogService driverLogService;
 
     @Pointcut("@annotation(com.cy.driver.common.annotate.ReqRespHeadCode)")
-    public void cutController(){}
+    public void cutController() {
+    }
 
     @Around(value = "cutController()")
     public Object proceedController(ProceedingJoinPoint point) throws Throwable {
@@ -50,14 +51,14 @@ public class ApiControllerProxy {
         String methodName = method.getName();
         /** 类名称 */
         String targetName = point.getTarget().getClass().getName();
-        BaseAction baseAction = (BaseAction)point.getTarget();
+        BaseAction baseAction = (BaseAction) point.getTarget();
         //获取request
         RequestAttributes ra = RequestContextHolder.getRequestAttributes();
-        ServletRequestAttributes sra = (ServletRequestAttributes)ra;
+        ServletRequestAttributes sra = (ServletRequestAttributes) ra;
         HttpServletRequest request = sra.getRequest();
         Log log = method.getAnnotation(Log.class);
         //往数据库记录日志
-        if(log!=null) {
+        if (log != null) {
             LogDTO logDTO = new LogDTO();
             logDTO.setOperationType(log.type().getOperationType());
             logDTO.setOperationName(log.type().getOperationName());
@@ -75,7 +76,7 @@ public class ApiControllerProxy {
         Object obj = null;
         try {
             obj = point.proceed();
-        }catch (Exception e){
+        } catch (Exception e) {
             baseAction.findException(baseAction.getResponse());
             LOG.error("{}.{}(){}出现异常", targetName, methodName, reqRespHeadCode.reqHeadCode().getDesc(), e);
         }
@@ -86,19 +87,21 @@ public class ApiControllerProxy {
         StringBuffer sb = new StringBuffer();
         Enumeration enumeration = request.getParameterNames();
         sb.append("接口").append(request.getRequestURI()).append("请求参数-----------");
-        while (enumeration.hasMoreElements()){
+        while (enumeration.hasMoreElements()) {
             String name = (String) enumeration.nextElement();
             String value = request.getParameter(name);
-            if(StringUtils.isNotEmpty(value)) {
+            if (StringUtils.isNotEmpty(value)) {
                 sb.append(name).append("=").append(value).append(" & ");
             }
         }
-        return sb.substring(0,sb.length()-3);
+        return sb.substring(0, sb.length() - 3);
     }
 
 
-    /** 获得司机id */
-    private Long findDriverId(HttpServletRequest request){
+    /**
+     * 获得司机id
+     */
+    private Long findDriverId(HttpServletRequest request) {
         try {
             Object userId = request.getAttribute("userId");
             String userIdStr = userId == null ? "" : userId.toString();
@@ -107,7 +110,7 @@ public class ApiControllerProxy {
             }
             return Long.valueOf(userIdStr);
         } catch (Exception e) {
-            if(LOG.isErrorEnabled()){
+            if (LOG.isErrorEnabled()) {
                 LOG.error("系统日志计录拦截器获得司机id出错", e);
             }
         }

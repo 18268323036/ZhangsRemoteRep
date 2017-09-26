@@ -59,7 +59,7 @@ public class RedisService {
      */
     public void setStr(String key, String val, long ttl){
         if(ttl==-1){
-            valOpsStr.set(key,val);
+            valOpsStr.set(key, val);
         }else{
             valOpsStr.set(key,val,ttl,TimeUnit.SECONDS);
         }
